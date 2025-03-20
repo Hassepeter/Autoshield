@@ -1,0 +1,1054 @@
+/* Grundläggande CSS-reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Nebula font definition */
+@font-face {
+    font-family: 'Nebula';
+    src: url('Fonts/Nebula-Regular.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+    overflow-x: hidden;
+}
+
+/* Subtil bakgrundstextur för hela sidan */
+body:before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml,%3Csvg width="20" height="20" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M0 0h20v20H0z" fill="%23f8f9fa"/%3E%3Cpath d="M0 0h1v1H0z" fill="%23eaeaea"/%3E%3C/svg%3E');
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Header/Navbar - Updated to black with white text */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background-color: #000000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Logo text style */
+.logo-text {
+    transition: transform 0.3s ease;
+}
+
+.logo-text:hover {
+    transform: scale(1.05);
+}
+
+.logo-text a {
+    font-family: 'Nebula', sans-serif;
+    font-size: 2rem;
+    text-decoration: none;
+    color: #ffffff;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    position: relative;
+    margin: 0 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    padding: 8px 0;
+    position: relative;
+}
+
+.nav-links a:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #1a73e8;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #1a73e8;
+}
+
+.nav-links a:hover:before {
+    width: 100%;
+}
+
+.dropdown {
+    position: absolute;
+    background-color: #000000;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    width: 250px;
+    display: none;
+    z-index: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    transform: translateX(-50%); /* Lägg till denna rad för att centrera */
+    left: 50%; /* Lägg till denna rad för att centrera */
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-links li:hover .dropdown {
+    display: block;
+    transform: translateX(-50%) translateY(0); /* Justera transform för att inkludera translateX */
+    opacity: 1;
+}
+
+.dropdown li {
+    margin: 0;
+    padding: 10px 15px;
+    border-bottom: 1px solid #333;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown li:hover {
+    background-color: #111;
+}
+
+.dropdown li:last-child {
+    border-bottom: none;
+}
+
+.cta-button {
+    background: linear-gradient(135deg, #1a73e8, #0d47a1);
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(26, 115, 232, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.7s ease;
+}
+
+.cta-button:hover {
+    box-shadow: 0 6px 20px rgba(26, 115, 232, 0.4);
+    transform: translateY(-2px);
+}
+
+.cta-button:hover:before {
+    left: 100%;
+}
+
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #ffffff;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+}
+
+/* Hero Section - Updated with Nebula font */
+.hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 70px; /* Kompensera för den fasta navbaren */
+    overflow: hidden;
+}
+
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('bilder/hero.jpg'); /* Ersätt med din faktiska bild */
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.6); /* Gör bilden mörkare */
+    z-index: -1;
+    animation: zoomEffect 20s infinite alternate;
+}
+
+@keyframes zoomEffect {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.05);
+    }
+}
+
+/* Stiliserade geometriska former som overlay på hero */
+.hero:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 40%, rgba(26, 115, 232, 0.1) 100%);
+    z-index: -1;
+}
+
+.hero-content {
+    width: 50%;
+    padding: 0 5%;
+    color: #fff;
+    animation: fadeInLeft 1s ease-out;
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.hero-content h1 {
+    font-family: 'Nebula', sans-serif;
+    font-size: 4.5rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    line-height: 1.2;
+    background: linear-gradient(135deg, #fff, #e0e0e0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 3px;
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+}
+
+.hero-content .cta-button {
+    padding: 15px 35px;
+    font-size: 1.1rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(26, 115, 232, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(26, 115, 232, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(26, 115, 232, 0);
+    }
+}
+
+/* Logo Clouds Section */
+.logo-clouds {
+    padding: 30px 5%;
+    background: linear-gradient(180deg, #fff, #f8f9fa);
+    text-align: center;
+    position: relative;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.logo-clouds h2 {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    color: #555;
+    font-weight: 500;
+    letter-spacing: 1px;
+    position: relative;
+    display: inline-block;
+}
+
+.logo-clouds h2:after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background-color: #1a73e8;
+}
+
+.logos {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logos img {
+    height: 50px;
+    width: auto;
+    max-width: 150px; /* Prevents logos from being too wide */
+    object-fit: contain; /* Ensures the logo maintains its aspect ratio */
+    margin: 10px 20px;
+    filter: grayscale(100%) contrast(0.8) brightness(1.2);
+    transition: all 0.5s ease;
+    opacity: 0.7;
+}
+
+.logos img:hover {
+    filter: grayscale(0%) contrast(1) brightness(1);
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+/* Om Oss Section */
+.om-oss {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 5%;
+    background-color: #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+
+.om-oss .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    flex-wrap: wrap; /* Lägg till flex-wrap för att hantera mindre skärmar */
+}
+
+.om-oss .text-content {
+    flex: 1;
+    padding-left: 20px; /* Ändra från padding-right till padding-left */
+    min-width: 300px; /* Lägg till min-width för att hantera mindre skärmar */
+}
+
+.om-oss .text-content h2 {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+}
+
+.om-oss .text-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.om-oss .text-content p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.om-oss .image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 300px; /* Lägg till min-width för att hantera mindre skärmar */
+}
+
+.om-oss .image-container img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsiv design för mindre skärmar */
+@media (max-width: 768px) {
+    .om-oss .content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .om-oss .text-content {
+        padding-left: 0; /* Ändra från padding-right till padding-left */
+        margin-bottom: 20px;
+    }
+
+    .om-oss .image-container {
+        margin-bottom: 10px;
+    }
+}
+
+.varfor-valja-oss {
+    text-align: center;
+    padding: 50px 0;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: #000000; /* Ändra färgen här till önskad färg */
+    margin-bottom: 20px;
+}
+
+.banner {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    background: url('bilder/varför.jpg') no-repeat center;
+    background-size: cover; /* Ändra från cover till contain för att anpassa bilden efter containern */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 30px; /* Lägg till denna rad för att ge rundade kanter */
+    overflow: hidden; /* Se till att innehållet inte överstiger de rundade kanterna */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.0);
+    border-radius: 40px; /* Lägg till denna rad för att matcha de rundade kanterna */
+}
+.banner h2 {
+    color: #1a73e8; /* Ändra färgen här till önskad färg */
+    font-size: 2rem;
+    font-weight: bold;
+    position: relative;
+    z-index: 2;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 50px 20px;
+    position: relative;
+}
+
+.points {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    position: relative;
+    margin-top: -80px; /* Lyft upp rutorna över bilden */
+    z-index: 3; /* Sätt rutorna ovanför bakgrunden */
+}
+
+.point {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    width: 30%;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.point:hover {
+    transform: translateY(-5px);
+}
+
+.icon {
+    font-size: 40px;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    .points {
+        flex-direction: column;
+        align-items: center;
+        margin-top: -50px; /* Anpassa för mindre skärmar */
+    }
+    .point {
+        width: 80%;
+    }
+}
+/* CTA-knapp */
+.cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #1a73e8;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-size: 1rem;
+    margin-top: 20px; /* Lägg till marginal för att separera knappen från texten */
+}
+
+.cta-button:hover {
+    background-color: #155ab6;
+}
+
+/* Tjänster Section */
+.tjanster {
+    padding: 100px 5%;
+    background-color: #fff;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.tjanster h2 {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+}
+
+.tjanster h2:after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #1a73e8, #64b5f6);
+    border-radius: 2px;
+}
+
+.sub-heading {
+    font-size: 2rem;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+.sub-heading .highlight {
+    color: #1a73e8; /* Använd samma blå färg som redan används på sidan */
+}
+
+.tjanster-lista {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.service-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    flex: 1 1 calc(25% - 40px); /* Justera bredden för att få plats med fyra kort */
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.service-card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.service-card .icon {
+    font-size: 40px;
+    color: #007bff;
+    transition: transform 0.3s;
+    margin-bottom: 10px;
+}
+
+.service-card:hover .icon {
+    transform: scale(1.1);
+}
+
+.service-card h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.service-card p {
+    color: #555;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.service-card .cta {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #1a73e8;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-size: 1rem;
+    margin-top: auto; /* Lägg till auto för att trycka knappen till botten */
+}
+
+.service-card .cta:hover {
+    background-color: #155ab6;
+}
+
+/* Responsiv design för mindre skärmar */
+@media (max-width: 768px) {
+    .tjanster-lista {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .service-card {
+        flex: 1 1 100%;
+        max-width: 80%;
+    }
+}
+
+/* Kundrecensioner */
+.kundrecensioner {
+    background: #111;
+    padding: 80px 20px;
+    text-align: center;
+    color: white;
+}
+
+.kundrecensioner .nebula-font {
+    font-family: 'Nebula', sans-serif;
+    font-size: 2rem;
+    color: #ffffff;
+}
+
+.kundrecensioner h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.swiper {
+    width: 90%;
+    max-width: 800px;
+    margin: auto;
+    position: relative;
+}
+
+.testimonial {
+    background: #222;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+.stars {
+    color: #FFD700;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.quote {
+    font-style: italic;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.customer {
+    font-weight: bold;
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+.swiper-pagination-bullet {
+    background: white !important;
+}
+
+/* FAQ-sektion */
+.faq {
+    padding: 50px 20px;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+.faq h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.faq-lista {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.faq-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    flex: 1 1 calc(50% - 20px); /* Två kolumner med gap */
+    box-sizing: border-box;
+}
+
+.faq-question {
+    padding: 15px;
+    font-size: 1.0rem;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #1a73e8;
+    color: #fff;
+    margin: 0;
+    white-space: normal; /* Tillåt radbrytning */
+    overflow: hidden; /* Förhindra överflöd */
+    text-overflow: ellipsis; /* Lägg till ellipsis om texten är för lång */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Lägg till transition för hovereffekter */
+}
+
+.faq-question:hover {
+    background-color: #155ab6; /* Ändra bakgrundsfärg vid hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Lägg till skugga vid hover */
+}
+
+.faq-answer {
+    padding: 15px;
+    font-size: 1rem;
+    display: none;
+    background-color: #f8f9fa;
+    color: #333;
+    font-weight: bold; /* Gör texten fetstil */
+}
+
+.faq-item.active .faq-answer {
+    display: block;
+}
+
+/* Responsiv design för mindre skärmar */
+@media (max-width: 768px) {
+    .faq-lista {
+        flex-direction: column;
+    }
+
+    .faq-item {
+        flex: 1 1 100%;
+    }
+}
+/* Kontaktformulär */
+.kontakt {
+    padding: 50px 10px;
+    text-align: center;
+    background-color: #333; /* Mörkgrå bakgrundsfärg */
+    color: white;
+    border-radius: 10px; /* Rundade hörn */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Lätt skugga */
+    max-width: 1500px;
+    margin: 50px auto; /* Centrerar sektionen och lägger till marginal */
+}
+
+.kontakt h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #ccc; /* Ljusare grå färg för texten */
+}
+
+.kontakt .sub-heading {
+    font-size: 2.0rem; /* Stor textstorlek för h1 */
+    margin-bottom: 20px;
+    color: white; /* Vit text */
+    white-space: nowrap;
+    overflow: hidden; /* Förhindra överflöd */
+    text-overflow: ellipsis; /* Lägg till ellipsis om texten är för lång */ 
+}
+
+.kontakt .sub-heading .highlight {
+    color: #1a73e8; /* Använd samma blå färg som redan används på sidan */
+}
+
+.kontakt p {
+    font-size: 1rem;
+    margin-bottom: 30px;
+    color: #f8f8f8; /* Ljusare grå färg för texten */
+}
+
+.kontakt .cta-button {
+    background: linear-gradient(135deg, #1a73e8, #0d47a1);
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(26, 115, 232, 0.3);
+    position: relative;
+    overflow: hidden;
+    font-size: 1.1rem; /* Samma storlek som i hero-sektionen */
+    text-decoration: none; /* Ta bort understrykning */
+}
+
+.kontakt .cta-button:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.7s ease;
+}
+
+.kontakt .cta-button:hover {
+    box-shadow: 0 6px 20px rgba(26, 115, 232, 0.4);
+    transform: translateY(-2px);
+}
+
+.kontakt .cta-button:hover:before {
+    left: 100%;
+}
+/* Footer */
+footer {
+    background: linear-gradient(135deg, #000000, #0a0a0a);
+    color: #ffffff;
+    padding: 80px 5% 30px;
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+footer:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml,%3Csvg width="20" height="20" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M0 0h20v20H0z" fill="none"/%3E%3Cpath d="M10 10h1v1h-1z" fill="rgba(255, 255, 255, 0.03)"/%3E%3C/svg%3E');
+    opacity: 0.15;
+    z-index: 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 250px;
+    padding: 0 15px;
+}
+
+.footer-logo {
+    margin-bottom: 25px;
+}
+
+.footer-logo a {
+    font-family: 'Nebula', sans-serif;
+    font-size: 2rem;
+    color: #ffffff;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.footer-logo a:hover {
+    transform: scale(1.05);
+}
+
+.footer-col h3 {
+    font-size: 1.4rem;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+.footer-col h3:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, #1a73e8, #64b5f6);
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-left: 15px;
+}
+
+.footer-links a:before {
+    content: '»';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #1a73e8;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+    padding-left: 20px;
+}
+
+.footer-links a:hover:before {
+    opacity: 1;
+}
+
+.contact-info p {
+    margin-bottom: 15px;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+}
+
+.contact-info i {
+    color: #1a73e8;
+    margin-right: 10px;
+    width: 20px;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background: linear-gradient(135deg, #1a73e8, #0d47a1);
+    transform: translateY(-3px);
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+}
+
+/* Responsiv design */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        gap: 50px;
+    }
+    
+    .footer-col {
+        text-align: center;
+    }
+    
+    .footer-links a {
+        padding-left: 0;
+    }
+    
+    .footer-links a:hover {
+        padding-left: 15px;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+}
