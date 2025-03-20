@@ -805,7 +805,7 @@ body:before {
 .kontakt {
     padding: 50px 10px;
     text-align: center;
-    background-color: #333; /* Mörkgrå bakgrundsfärg */
+    background-color: #000000; /* Mörkgrå bakgrundsfärg */
     color: white;
     border-radius: 10px; /* Rundade hörn */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Lätt skugga */
