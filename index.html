@@ -11,6 +11,10 @@
     <link rel="stylesheet" href="style.css">
     <!-- Länk till Font Awesome för ikoner -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <!-- Nebula font import -->
     <style>
         @font-face {
@@ -28,7 +32,7 @@
             <a href="#hem">AUTOSHIELD</a>
         </div>
         <!-- Hamburgermeny för mobila enheter -->
-        <button class="hamburger">
+        <button class="hamburger" aria-label="Meny" aria-expanded="false">
             <span></span>
             <span></span>
             <span></span>
@@ -116,7 +120,6 @@
 
         <!-- Tjänster Section -->
         <section id="tjanster" class="tjanster">
-            <h3>Tjänster</h3>
             <h2 class="sub-heading"><span class="highlight">Precision</span> i alla tjänster</h2>
             <div class="tjanster-lista">
                 <div class="service-card">
@@ -153,33 +156,44 @@
         <!-- Kundrecensioner Section -->
         <section id="kundrecensioner" class="kundrecensioner">
             <h2>Vad kunderna säger om <span class="nebula-font">AUTOSHIELD</span></h2>
-            <div class="swiper mySwiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
+            <div class="swiper mySwiper" role="region" aria-label="Kundrecensioner">
+                <div class="swiper-wrapper" role="listbox">
+                    <div class="swiper-slide" role="listitem">
                         <div class="testimonial">
-                            <div class="stars">⭐⭐⭐⭐⭐</div>
-                            <p class="quote">"Fantastiskt resultat! Min Porsche ser ut som ny och lacken känns otroligt len."</p>
-                            <p class="customer">– Johan S., Porsche 911 Turbo</p>
+                            <div class="testimonial-content">
+                                <div class="stars">★★★★★</div>
+                                <p class="quote">"Fantastiskt resultat! Min Porsche ser ut som ny och lacken känns otroligt len."</p>
+                                <p class="customer">– Johan S., Porsche 911 Turbo</p>
+                            </div>
+                            <img src="bilder/temp_image_B4A3C73F-FB43-4315-8AD0-09ED533A59F4.png" alt="Johan S. och hans Porsche 911 Turbo" class="testimonial-image">
                         </div>
                     </div>
-                    <div class="swiper-slide">
+                    <div class="swiper-slide" role="listitem">
                         <div class="testimonial">
-                            <div class="stars">⭐⭐⭐⭐⭐</div>
-                            <p class="quote">"Bästa skyddet jag testat! Stenskottsfilmen är helt osynlig och bilen håller sig ren längre."</p>
-                            <p class="customer">– Lisa K., BMW M5</p>
+                            <div class="testimonial-content">
+                                <div class="stars">★★★★★</div>
+                                <p class="quote">"Bästa skyddet jag testat! Stenskottsfilmen är helt osynlig och bilen håller sig ren längre."</p>
+                                <p class="customer">– Lisa K., BMW M5</p>
+                            </div>
+                            <img src="bilder/temp_image_9DD9890C-88ED-44C5-862C-469DD4F8D971.png" alt="Lisa K. och hennes BMW M5" class="testimonial-image">
                         </div>
                     </div>
-                    <div class="swiper-slide">
+                    <div class="swiper-slide" role="listitem">
                         <div class="testimonial">
-                            <div class="stars">⭐⭐⭐⭐⭐</div>
-                            <p class="quote">"Xpel™-lackskyddet är en game-changer. Rekommenderas starkt!"</p>
-                            <p class="customer">– Anders B., Tesla Model S</p>
+                            <div class="testimonial-content">
+                                <div class="stars">★★★★★</div>
+                                <p class="quote">"Xpel™-lackskyddet är en game-changer. Rekommenderas starkt!"</p>
+                                <p class="customer">– Anders B., Tesla Model S</p>
+                            </div>
+                            <img src="bilder/temp_image_3289DC14-ABFC-4665-A4C3-50FC27CC9B88.png" alt="Anders B. och hans Tesla Model S" class="testimonial-image">
                         </div>
                     </div>
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
         </section>
+        
+        
 
         <!-- FAQ Section -->
         <section id="faq" class="faq">
